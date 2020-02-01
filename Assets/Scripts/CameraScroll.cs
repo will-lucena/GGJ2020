@@ -14,6 +14,8 @@ public class CameraScroll : MonoBehaviour
     [SerializeField] private Transform camTransform = null;
     [SerializeField] private TextMeshProUGUI T1text, T2text, sText;
     [SerializeField] private Camera cam;
+    [SerializeField] private float speedModifier;
+    
     
     
     private float initialDistance, bufferDistance, initialSize;
@@ -118,18 +120,20 @@ public class CameraScroll : MonoBehaviour
 
     private void MouseMoveCamera(Vector3 deltaVector)
     {
-        camTransform.position += (-deltaVector * Time.deltaTime);
+        camTransform.position += -deltaVector * (Time.deltaTime * speedModifier);
     }
     
     private void OnEnable()
     {
         _inputs.Movement.Enable();
+        _inputs.MouseMovement.Enable();
         _inputs.Pinch.Enable();
     }
 
     private void OnDisable()
     {
         _inputs.Movement.Disable();
+        _inputs.MouseMovement.Disable();
         _inputs.Pinch.Disable();
     }
 }

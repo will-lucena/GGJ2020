@@ -714,7 +714,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camTransform: {fileID: 1000658617}
-  speedModifier: 4
+  T1text: {fileID: 0}
+  T2text: {fileID: 0}
+  sText: {fileID: 0}
+  cam: {fileID: 1000658616}
+  speedModifier: 6
 --- !u!4 &400260143
 Transform:
   m_ObjectHideFlags: 0
@@ -6288,6 +6292,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camTransform: {fileID: 1000658617}
+  T1text: {fileID: 0}
+  T2text: {fileID: 0}
+  sText: {fileID: 0}
+  cam: {fileID: 0}
   speedModifier: 0
 --- !u!4 &1472714248
 Transform:
