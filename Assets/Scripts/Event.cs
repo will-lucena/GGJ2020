@@ -7,8 +7,8 @@ using Utils;
 public class Event : MonoBehaviour
 {
     public static Action<EventKind, Transform> callUnities;
-    public Action<string, Vector3> eventFail;
-    public Action<string, Vector3> eventSuccess;
+    public Action<string, Vector3, int> eventFail;
+    public Action<string, Vector3, int> eventSuccess;
 
     [SerializeField] private EventBar failBarController;
     [SerializeField] private EventBar fixBarController;
@@ -19,16 +19,18 @@ public class Event : MonoBehaviour
     private float _fixTime;
     private string _name;
     private EventKind _kind;
+    private int _id;
     
-    public void setup(Vector3 eventPoint, EventDefinition eventDefinition, Transform parent)
+    public void setup(Vector3 eventPoint, EventDefinition eventDefinition, Transform parent, int id)
     {
         transform.SetParent(parent);
         transform.position = eventPoint;
         _hardness = eventDefinition.hardness;
         _timeToFail = eventDefinition.timeToFail;
         _timeToSucess = eventDefinition.timeToSuccess;
-        _name = eventDefinition.name;
+        _name = eventDefinition.description;
         _kind = eventDefinition.kind;
+        _id = id;
 
         GetComponent<SpriteRenderer>().color = eventDefinition.color;
         StartCoroutine(timer());
@@ -46,7 +48,7 @@ public class Event : MonoBehaviour
 
         if (_fixTime < _timeToSucess)
         {
-            eventFail?.Invoke(_name, transform.position);
+            eventFail?.Invoke(_name, transform.position, _id);
             StopAllCoroutines();
         }
         Invoke("destroy", 1);;
@@ -62,7 +64,7 @@ public class Event : MonoBehaviour
             fixBarController.updateBar(Mathf.Clamp(_fixTime / _timeToSucess, 0f, 1f));
             yield return new WaitForEndOfFrame();
         }
-        eventSuccess?.Invoke(_name, transform.position);
+        eventSuccess?.Invoke(_name, transform.position, _id);
         StopAllCoroutines();
         Invoke("destroy", 1);
     }
@@ -75,14 +77,14 @@ public class Event : MonoBehaviour
     public void fail()
     {
         StopAllCoroutines();
-        eventFail?.Invoke(_name, transform.position);
+        eventFail?.Invoke(_name, transform.position, _id);
         Destroy(gameObject);
     }
     
     public void success()
     {
         StopAllCoroutines();
-        eventSuccess?.Invoke(_name, transform.position);
+        eventSuccess?.Invoke(_name, transform.position, _id);
         Destroy(gameObject);
     }
 

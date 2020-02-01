@@ -16,5 +16,5 @@ MonoBehaviour:
   _hardness: 3
   _timeToFail: 30
   _timeToSuccess: 10
-  _name: 
+  _description: Bike crash
   _color: {r: 0.96469927, g: 1, b: 0, a: 1}
