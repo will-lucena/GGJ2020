@@ -18,7 +18,7 @@ public class CameraScroll : MonoBehaviour
     
     private float initialDistance, bufferDistance, initialSize;
     private Vector2 t1Pos, t2Pos;
-    private bool canPinch;
+    private bool canPinch = false;
     private bool beginPinch;
 
     private Inputs _inputs;
@@ -48,9 +48,16 @@ public class CameraScroll : MonoBehaviour
         {
             t1Pos = ctx.ReadValue<Vector2>();
         };
+        
         _inputs.Pinch.Touch2.performed += ctx =>
         {
-            if (canPinch)
+            if (!canPinch)
+            {
+                initialDistance = Vector2.Distance(t1Pos, t2Pos);
+                initialSize = cam.orthographicSize;
+                canPinch = true;
+            }
+            else
             {
                 t2Pos = ctx.ReadValue<Vector2>();
                 bufferDistance = (Vector2.Distance(t1Pos, t2Pos) - initialDistance);
@@ -58,6 +65,16 @@ public class CameraScroll : MonoBehaviour
                 sText.SetText(bufferDistance.ToString());
             }
         };
+
+        Touch.onFingerUp += ctx =>
+        {
+            if (ctx.index == 2)
+            {
+                canPinch = false; 
+                sText.SetText("NOT PINCHING");
+            }
+        };
+        
         /*_inputs.Pinch.Tap2.canceled += ctx =>
         {
             canPinch = false; 
@@ -82,7 +99,8 @@ public class CameraScroll : MonoBehaviour
         camTransform.position += ((Vector3) (-bufferVector/6) * Time.deltaTime);
         if(canMouse)
             MouseMoveCamera(mouseBufferVector/6);
-        if (Touch.activeFingers.Count < 2)
+        
+        /*if (Touch.activeFingers.Count < 2)
         {
             canPinch = false; 
             sText.SetText("NOT PINCHING");
@@ -95,7 +113,7 @@ public class CameraScroll : MonoBehaviour
                 initialSize = cam.orthographicSize;
                 canPinch = true;
             }
-        }
+        }*/
     }
 
     private void MouseMoveCamera(Vector3 deltaVector)
