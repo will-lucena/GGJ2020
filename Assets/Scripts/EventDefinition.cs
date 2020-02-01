@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Definitions;
+using Utils;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Calamity", menuName = "Event")]
@@ -14,5 +14,8 @@ public class EventDefinition : ScriptableObject
 
     public EventKind kind => _kind;
     public new string name => _name;
-    
+    public float hardness => _hardness;
+    public float timeToFail => _timeToFail;
+    public float timeToSuccess => _timeToSuccess;
+
 }

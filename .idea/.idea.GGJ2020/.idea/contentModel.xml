@@ -216,12 +216,13 @@
           <e p="CameraPinch.cs" t="Include" />
           <e p="CameraScroll.cs" t="Include" />
           <e p="CityEvent.cs" t="Include" />
-          <e p="Definitions.cs" t="Include" />
+          <e p="Event.cs" t="Include" />
           <e p="EventDefinition.cs" t="Include" />
           <e p="EventManager.cs" t="Include" />
           <e p="PathCreator.cs" t="Include" />
           <e p="SecurityEvent.cs" t="Include" />
           <e p="UnitDefinition.cs" t="Include" />
+          <e p="Utils.cs" t="Include" />
         </e>
         <e p="TextMesh Pro" t="Include">
           <e p="Fonts" t="Include">

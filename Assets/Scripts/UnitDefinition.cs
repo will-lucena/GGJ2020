@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Definitions;
+using Utils;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Unit", menuName = "Unit")]
@@ -11,7 +11,7 @@ public class UnitDefinition : ScriptableObject
     [SerializeField] private UnitKind _kind;
     [SerializeField] private float _movementSpeed;
 
-    [SerializeField] private Skill[] _skills;
+    [SerializeField] private SkillDict[] _skills;
 
     public UnitKind kind => _kind;
     public float movementSpeed => _movementSpeed;
@@ -23,11 +23,11 @@ public class UnitDefinition : ScriptableObject
             return item.kind == kind;
         }).value;
     }
-}
-
-[Serializable]
-public class Skill
-{
-    public EventKind kind;
-    public float value;
+    
+    [Serializable]
+    private class SkillDict
+    {
+        public EventKind kind;
+        public float value;
+    }
 }
