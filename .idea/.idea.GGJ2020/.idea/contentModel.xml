@@ -212,6 +212,7 @@
           <e p="Inputs.cs" t="Include" />
         </e>
         <e p="Scripts" t="Include">
+          <e p="AnimatorSetter.cs" t="Include" />
           <e p="CameraPinch.cs" t="Include" />
           <e p="CameraScroll.cs" t="Include" />
           <e p="CityEvent.cs" t="Include" />

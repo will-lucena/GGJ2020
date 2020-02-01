@@ -633,6 +633,8 @@ MonoBehaviour:
   T2text: {fileID: 1941494677}
   sText: {fileID: 394061307}
   cam: {fileID: 1285163208}
+  speedModifier: 0
+  pinchVelocity: 2.5
 --- !u!1 &1744913020
 GameObject:
   m_ObjectHideFlags: 0
