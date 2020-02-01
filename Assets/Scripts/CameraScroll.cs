@@ -11,28 +11,26 @@ public class CameraScroll : MonoBehaviour
 {
     [SerializeField] private Transform camTransform = null;
 
-    private CameraMovements camInputs;
-    private MouseMovements mouseInputs;
+    private Inputs _inputs;
     private Vector2 bufferVector, mouseBufferVector;
     private bool canMouse;
 
     private void Awake()
     {
-        camInputs = new CameraMovements();
-        mouseInputs = new MouseMovements();
+        _inputs = new Inputs();
         if (!camTransform)
         {
             camTransform = transform;
         }
 
-        camInputs.Movement.Scroll.performed += ctx => bufferVector = ctx.ReadValue<Vector2>();
-        camInputs.Movement.Scroll.canceled += ctx => bufferVector = Vector2.zero;
+        _inputs.Movement.Scroll.performed += ctx => bufferVector = ctx.ReadValue<Vector2>();
+        _inputs.Movement.Scroll.canceled += ctx => bufferVector = Vector2.zero;
         
-        mouseInputs.Movement.MouseScrollDelta.performed += ctx => mouseBufferVector = ctx.ReadValue<Vector2>();
-        mouseInputs.Movement.MouseScrollDelta.canceled += ctx => mouseBufferVector = Vector2.zero;
+        _inputs.MouseMovement.MouseScrollDelta.performed += ctx => mouseBufferVector = ctx.ReadValue<Vector2>();
+        _inputs.MouseMovement.MouseScrollDelta.canceled += ctx => mouseBufferVector = Vector2.zero;
 
-        mouseInputs.Movement.MousePress.performed += ctx => canMouse = true;
-        mouseInputs.Movement.MousePress.canceled += ctx => canMouse = false;
+        _inputs.MouseMovement.MousePress.performed += ctx => canMouse = true;
+        _inputs.MouseMovement.MousePress.canceled += ctx => canMouse = false;
     }
 
     private void Update()
@@ -49,13 +47,11 @@ public class CameraScroll : MonoBehaviour
     
     private void OnEnable()
     {
-        camInputs.Movement.Enable();
-        mouseInputs.Movement.Enable();
+        _inputs.Movement.Enable();
     }
 
     private void OnDisable()
     {
-        camInputs.Movement.Disable();
-        mouseInputs.Movement.Disable();
+        _inputs.Movement.Disable();
     }
 }

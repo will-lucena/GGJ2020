@@ -209,8 +209,7 @@
           </e>
         </e>
         <e p="Inputs" t="Include">
-          <e p="CameraMovements.cs" t="Include" />
-          <e p="MouseMovements.cs" t="Include" />
+          <e p="Inputs.cs" t="Include" />
         </e>
         <e p="Scripts" t="Include">
           <e p="CameraPinch.cs" t="Include" />
@@ -221,7 +220,9 @@
           <e p="EventManager.cs" t="Include" />
           <e p="PathCreator.cs" t="Include" />
           <e p="SecurityEvent.cs" t="Include" />
+          <e p="Unit.cs" t="Include" />
           <e p="UnitDefinition.cs" t="Include" />
+          <e p="UnitManager.cs" t="Include" />
           <e p="Utils.cs" t="Include" />
         </e>
         <e p="TextMesh Pro" t="Include">

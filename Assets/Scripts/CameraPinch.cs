@@ -8,35 +8,35 @@ public class CameraPinch : MonoBehaviour
     [SerializeField] private Camera cam;
     
     
-    private CameraMovements camInputs;
+    private Inputs _inputs;
     private float initialDistance, bufferDistance, initialSize;
     private Vector2 t1Pos, t2Pos;
     private bool canPinch;
     private bool beginPinch;
     private void Awake()
     {
-        camInputs = new CameraMovements();
+        _inputs = new Inputs();
         /*camInputs.Pinch.Touch1.performed += ctx => t1Pos = ctx.ReadValue<Vector2>() / new Vector2(Screen.width, Screen.height);
         camInputs.Pinch.Touch2.performed += ctx => t2Pos = ctx.ReadValue<Vector2>() / new Vector2(Screen.width, Screen.height);
         */
-        camInputs.Pinch.Touch1.performed += ctx =>
+        _inputs.Pinch.Touch1.performed += ctx =>
         {
             t1Pos = ctx.ReadValue<Vector2>();
         };
-        camInputs.Pinch.Touch2.performed += ctx =>
+        _inputs.Pinch.Touch2.performed += ctx =>
         {
             t2Pos = ctx.ReadValue<Vector2>();
             bufferDistance = (Vector2.Distance(t1Pos, t2Pos) - initialDistance);
             cam.orthographicSize = initialSize - bufferDistance/100;
             sText.SetText(bufferDistance.ToString());
         };
-        camInputs.Pinch.Tap2.performed += ctx =>
+        _inputs.Pinch.Tap2.performed += ctx =>
         {
             initialDistance = Vector2.Distance(t1Pos, t2Pos);
             initialSize = cam.orthographicSize;
             canPinch = true;
         };
-        camInputs.Pinch.Touch2.canceled += ctx => { canPinch = false; };
+        _inputs.Pinch.Touch2.canceled += ctx => { canPinch = false; };
 
         if (!cam)
         {
@@ -70,11 +70,11 @@ public class CameraPinch : MonoBehaviour
 
     private void OnEnable()
     {
-        camInputs.Pinch.Enable();
+        _inputs.Pinch.Enable();
     }
 
     private void OnDisable()
     {
-        camInputs.Pinch.Disable();
+        _inputs.Pinch.Disable();
     }
 }

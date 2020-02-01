@@ -8,10 +8,9 @@ using UnityEngine;
 public class EventManager : MonoBehaviour
 {
     [SerializeField] private bool loadEventPointsManually;
-    [SerializeField] private Dictionary<Transform, State> eventPoints;
+    [SerializeField] private Dictionary<Vector3, State> eventPoints;
     [SerializeField] private GameObject eventPrefab;
-    
-    
+
     private List<EventDefinition> _eventsBase;
     private Event _currentEvent;
     
@@ -28,21 +27,17 @@ public class EventManager : MonoBehaviour
             loadPoints();
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     
     private void loadPoints()
     {
-        eventPoints = new Dictionary<Transform, State>();
+        eventPoints = new Dictionary<Vector3, State>();
         eventPoints.Clear();
         foreach (Transform eventPoint in transform.GetComponentsInChildren<Transform>())
         {
-            eventPoints.Add(eventPoint, State.Available);
+            eventPoints.Add(eventPoint.position, State.Available);
         }
+
+        eventPoints.Remove(transform.position);
     }
 
     private void loadEventsBase()
@@ -52,7 +47,7 @@ public class EventManager : MonoBehaviour
 
     public void startEvent()
     {
-        Transform eventPoint = eventPoints.Keys.First(key => eventPoints[key] == State.Available);
+        Vector3 eventPoint = eventPoints.Keys.First(key => eventPoints[key] == State.Available);
         eventPoints[eventPoint] = State.Used;
         EventDefinition eventDefinition = _eventsBase[Utils.Functions.randomInt(_eventsBase.Count)];
 
@@ -63,14 +58,16 @@ public class EventManager : MonoBehaviour
         _currentEvent.eventSuccess += handleFix;
     }
 
-    private void handleFailure(string eventName)
+    private void handleFailure(string eventName, Vector3 key)
     {
         Debug.Log(eventName + " fail");
+        eventPoints[key] = State.Available;
     }
 
-    private void handleFix(string eventName)
+    private void handleFix(string eventName, Vector3 key)
     {
         Debug.Log(eventName + " fixed");
+        eventPoints[key] = State.Available;
     }
 
     public void fail()

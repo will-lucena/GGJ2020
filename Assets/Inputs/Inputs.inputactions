@@ -1,5 +1,5 @@
 {
-    "name": "CameraMovements",
+    "name": "Inputs",
     "maps": [
         {
             "name": "Movement",
@@ -118,6 +118,90 @@
                     "processors": "",
                     "groups": "",
                     "action": "Tap2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Click",
+            "id": "cf098297-83e9-4a01-9f08-0e3f24694d9c",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "95267f5b-f284-42f3-9f23-99ee18b769d4",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "456127dd-a7d2-4331-a988-204eeb2247c7",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fd7c3563-1320-49e4-beb0-db6e68f9d682",
+                    "path": "<Touchscreen>/primaryTouch",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "MouseMovement",
+            "id": "4f270a2d-7ce5-425c-aad9-d971c931c673",
+            "actions": [
+                {
+                    "name": "MouseScrollDelta",
+                    "type": "Value",
+                    "id": "248d857e-923b-4078-b631-b4f0fb43c3f4",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "MousePress",
+                    "type": "Button",
+                    "id": "bdcde478-f452-45be-821b-9304ab213faf",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "1c2c4f81-eb25-48a5-9b82-4e630a03e19d",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseScrollDelta",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6bcd32d0-b42e-444b-b3e3-7c3f1ac1228c",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MousePress",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

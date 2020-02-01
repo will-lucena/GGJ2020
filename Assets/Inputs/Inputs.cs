@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/Inputs/CameraMovements.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Inputs/Inputs.inputactions'
 
 using System;
 using System.Collections;
@@ -6,13 +6,13 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-public class @CameraMovements : IInputActionCollection, IDisposable
+public class @Inputs : IInputActionCollection, IDisposable
 {
     public InputActionAsset asset { get; }
-    public @CameraMovements()
+    public @Inputs()
     {
         asset = InputActionAsset.FromJson(@"{
-    ""name"": ""CameraMovements"",
+    ""name"": ""Inputs"",
     ""maps"": [
         {
             ""name"": ""Movement"",
@@ -135,6 +135,90 @@ public class @CameraMovements : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Click"",
+            ""id"": ""cf098297-83e9-4a01-9f08-0e3f24694d9c"",
+            ""actions"": [
+                {
+                    ""name"": ""New action"",
+                    ""type"": ""Button"",
+                    ""id"": ""95267f5b-f284-42f3-9f23-99ee18b769d4"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""456127dd-a7d2-4331-a988-204eeb2247c7"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""New action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fd7c3563-1320-49e4-beb0-db6e68f9d682"",
+                    ""path"": ""<Touchscreen>/primaryTouch"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""New action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""MouseMovement"",
+            ""id"": ""4f270a2d-7ce5-425c-aad9-d971c931c673"",
+            ""actions"": [
+                {
+                    ""name"": ""MouseScrollDelta"",
+                    ""type"": ""Value"",
+                    ""id"": ""248d857e-923b-4078-b631-b4f0fb43c3f4"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""MousePress"",
+                    ""type"": ""Button"",
+                    ""id"": ""bdcde478-f452-45be-821b-9304ab213faf"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""1c2c4f81-eb25-48a5-9b82-4e630a03e19d"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MouseScrollDelta"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6bcd32d0-b42e-444b-b3e3-7c3f1ac1228c"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MousePress"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -148,6 +232,13 @@ public class @CameraMovements : IInputActionCollection, IDisposable
         m_Pinch_Touch1 = m_Pinch.FindAction("Touch1", throwIfNotFound: true);
         m_Pinch_Touch2 = m_Pinch.FindAction("Touch2", throwIfNotFound: true);
         m_Pinch_Tap2 = m_Pinch.FindAction("Tap2", throwIfNotFound: true);
+        // Click
+        m_Click = asset.FindActionMap("Click", throwIfNotFound: true);
+        m_Click_Newaction = m_Click.FindAction("New action", throwIfNotFound: true);
+        // MouseMovement
+        m_MouseMovement = asset.FindActionMap("MouseMovement", throwIfNotFound: true);
+        m_MouseMovement_MouseScrollDelta = m_MouseMovement.FindAction("MouseScrollDelta", throwIfNotFound: true);
+        m_MouseMovement_MousePress = m_MouseMovement.FindAction("MousePress", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -201,8 +292,8 @@ public class @CameraMovements : IInputActionCollection, IDisposable
     private readonly InputAction m_Movement_Newaction;
     public struct MovementActions
     {
-        private @CameraMovements m_Wrapper;
-        public MovementActions(@CameraMovements wrapper) { m_Wrapper = wrapper; }
+        private @Inputs m_Wrapper;
+        public MovementActions(@Inputs wrapper) { m_Wrapper = wrapper; }
         public InputAction @Scroll => m_Wrapper.m_Movement_Scroll;
         public InputAction @Newaction => m_Wrapper.m_Movement_Newaction;
         public InputActionMap Get() { return m_Wrapper.m_Movement; }
@@ -243,8 +334,8 @@ public class @CameraMovements : IInputActionCollection, IDisposable
     private readonly InputAction m_Pinch_Tap2;
     public struct PinchActions
     {
-        private @CameraMovements m_Wrapper;
-        public PinchActions(@CameraMovements wrapper) { m_Wrapper = wrapper; }
+        private @Inputs m_Wrapper;
+        public PinchActions(@Inputs wrapper) { m_Wrapper = wrapper; }
         public InputAction @Touch1 => m_Wrapper.m_Pinch_Touch1;
         public InputAction @Touch2 => m_Wrapper.m_Pinch_Touch2;
         public InputAction @Tap2 => m_Wrapper.m_Pinch_Tap2;
@@ -283,6 +374,80 @@ public class @CameraMovements : IInputActionCollection, IDisposable
         }
     }
     public PinchActions @Pinch => new PinchActions(this);
+
+    // Click
+    private readonly InputActionMap m_Click;
+    private IClickActions m_ClickActionsCallbackInterface;
+    private readonly InputAction m_Click_Newaction;
+    public struct ClickActions
+    {
+        private @Inputs m_Wrapper;
+        public ClickActions(@Inputs wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Newaction => m_Wrapper.m_Click_Newaction;
+        public InputActionMap Get() { return m_Wrapper.m_Click; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ClickActions set) { return set.Get(); }
+        public void SetCallbacks(IClickActions instance)
+        {
+            if (m_Wrapper.m_ClickActionsCallbackInterface != null)
+            {
+                @Newaction.started -= m_Wrapper.m_ClickActionsCallbackInterface.OnNewaction;
+                @Newaction.performed -= m_Wrapper.m_ClickActionsCallbackInterface.OnNewaction;
+                @Newaction.canceled -= m_Wrapper.m_ClickActionsCallbackInterface.OnNewaction;
+            }
+            m_Wrapper.m_ClickActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Newaction.started += instance.OnNewaction;
+                @Newaction.performed += instance.OnNewaction;
+                @Newaction.canceled += instance.OnNewaction;
+            }
+        }
+    }
+    public ClickActions @Click => new ClickActions(this);
+
+    // MouseMovement
+    private readonly InputActionMap m_MouseMovement;
+    private IMouseMovementActions m_MouseMovementActionsCallbackInterface;
+    private readonly InputAction m_MouseMovement_MouseScrollDelta;
+    private readonly InputAction m_MouseMovement_MousePress;
+    public struct MouseMovementActions
+    {
+        private @Inputs m_Wrapper;
+        public MouseMovementActions(@Inputs wrapper) { m_Wrapper = wrapper; }
+        public InputAction @MouseScrollDelta => m_Wrapper.m_MouseMovement_MouseScrollDelta;
+        public InputAction @MousePress => m_Wrapper.m_MouseMovement_MousePress;
+        public InputActionMap Get() { return m_Wrapper.m_MouseMovement; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MouseMovementActions set) { return set.Get(); }
+        public void SetCallbacks(IMouseMovementActions instance)
+        {
+            if (m_Wrapper.m_MouseMovementActionsCallbackInterface != null)
+            {
+                @MouseScrollDelta.started -= m_Wrapper.m_MouseMovementActionsCallbackInterface.OnMouseScrollDelta;
+                @MouseScrollDelta.performed -= m_Wrapper.m_MouseMovementActionsCallbackInterface.OnMouseScrollDelta;
+                @MouseScrollDelta.canceled -= m_Wrapper.m_MouseMovementActionsCallbackInterface.OnMouseScrollDelta;
+                @MousePress.started -= m_Wrapper.m_MouseMovementActionsCallbackInterface.OnMousePress;
+                @MousePress.performed -= m_Wrapper.m_MouseMovementActionsCallbackInterface.OnMousePress;
+                @MousePress.canceled -= m_Wrapper.m_MouseMovementActionsCallbackInterface.OnMousePress;
+            }
+            m_Wrapper.m_MouseMovementActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @MouseScrollDelta.started += instance.OnMouseScrollDelta;
+                @MouseScrollDelta.performed += instance.OnMouseScrollDelta;
+                @MouseScrollDelta.canceled += instance.OnMouseScrollDelta;
+                @MousePress.started += instance.OnMousePress;
+                @MousePress.performed += instance.OnMousePress;
+                @MousePress.canceled += instance.OnMousePress;
+            }
+        }
+    }
+    public MouseMovementActions @MouseMovement => new MouseMovementActions(this);
     public interface IMovementActions
     {
         void OnScroll(InputAction.CallbackContext context);
@@ -293,5 +458,14 @@ public class @CameraMovements : IInputActionCollection, IDisposable
         void OnTouch1(InputAction.CallbackContext context);
         void OnTouch2(InputAction.CallbackContext context);
         void OnTap2(InputAction.CallbackContext context);
+    }
+    public interface IClickActions
+    {
+        void OnNewaction(InputAction.CallbackContext context);
+    }
+    public interface IMouseMovementActions
+    {
+        void OnMouseScrollDelta(InputAction.CallbackContext context);
+        void OnMousePress(InputAction.CallbackContext context);
     }
 }
