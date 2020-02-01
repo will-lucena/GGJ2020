@@ -7,6 +7,11 @@ using Utils;
 public class Event : MonoBehaviour
 {
     public static Action<EventKind, Transform> callUnities;
+    public Action<string, Vector3> eventFail;
+    public Action<string, Vector3> eventSuccess;
+
+    [SerializeField] private EventBar failBarController;
+    [SerializeField] private EventBar fixBarController;
     
     private float _hardness;
     private float _timeToFail;
@@ -14,13 +19,11 @@ public class Event : MonoBehaviour
     private float _fixTime;
     private string _name;
     private EventKind _kind;
-
-    public Action<string, Vector3> eventFail;
-    public Action<string, Vector3> eventSuccess;
     
-    public void setup(Vector3 eventPoint, EventDefinition eventDefinition)
+    public void setup(Vector3 eventPoint, EventDefinition eventDefinition, Transform parent)
     {
-        transform.localPosition = eventPoint;
+        transform.SetParent(parent);
+        transform.position = eventPoint;
         _hardness = eventDefinition.hardness;
         _timeToFail = eventDefinition.timeToFail;
         _timeToSucess = eventDefinition.timeToSuccess;
@@ -37,6 +40,7 @@ public class Event : MonoBehaviour
         while (totalTime < _timeToFail)
         {
             totalTime += Time.deltaTime;
+            failBarController.updateBar(1 - Mathf.Clamp(totalTime / _timeToFail, 0f, 1f));
             yield return new WaitForEndOfFrame();
         }
 
@@ -45,21 +49,26 @@ public class Event : MonoBehaviour
             eventFail?.Invoke(_name, transform.position);
             StopAllCoroutines();
         }
-        yield return new WaitForSeconds(1);
-        Destroy(gameObject);
+        Invoke("destroy", 1);;
     }
 
     private IEnumerator fix()
     {
         _fixTime = 0f;
+        fixBarController.initBar();
         while (_fixTime < _timeToSucess)
         {
             _fixTime += Time.deltaTime;
+            fixBarController.updateBar(Mathf.Clamp(_fixTime / _timeToSucess, 0f, 1f));
             yield return new WaitForEndOfFrame();
         }
         eventSuccess?.Invoke(_name, transform.position);
         StopAllCoroutines();
-        yield return new WaitForSeconds(1);
+        Invoke("destroy", 1);
+    }
+
+    private void destroy()
+    {
         Destroy(gameObject);
     }
 

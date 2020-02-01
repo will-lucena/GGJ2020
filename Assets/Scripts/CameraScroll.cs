@@ -97,7 +97,10 @@ public class CameraScroll : MonoBehaviour
         else
         {
             canPinch = false;
-            sText.SetText("NOT PINCHING");
+            if (sText)
+            {
+                sText.SetText("NOT PINCHING");
+            }
         }
 
     }
