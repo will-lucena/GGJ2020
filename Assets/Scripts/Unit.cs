@@ -34,8 +34,6 @@ public class Unit : MonoBehaviour
             _task.eventSuccess += freeUnit;
             _task.eventFail += freeUnit;
             _task.unitArrive();
-            _task.eventSuccess += freeUnit;
-            _task.eventFail += freeUnit;
             Debug.Log("Starting to work");
         }
     }
