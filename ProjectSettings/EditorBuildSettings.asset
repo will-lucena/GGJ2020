@@ -5,10 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/testLucena.unity
     guid: 4e73ca9f4e00b0b4ca9d9f6c8da8566a
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Astar.unity
     guid: 8dc36bef1c1e24f6e901edf107186317
   m_configObjects: {}

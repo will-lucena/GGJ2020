@@ -97,7 +97,7 @@ public class @Inputs : IInputActionCollection, IDisposable
                     ""id"": ""1739bf50-318a-4375-9cb2-bf8b26bd9507"",
                     ""expectedControlType"": """",
                     ""processors"": """",
-                    ""interactions"": """"
+                    ""interactions"": ""Press(behavior=2)""
                 }
             ],
             ""bindings"": [
