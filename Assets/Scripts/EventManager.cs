@@ -7,18 +7,28 @@ using UnityEngine;
 
 public class EventManager : MonoBehaviour
 {
+    public static Action<int, string> initQuest;
+    public static Action<int> failureReport;
+    public static Action<int> successReport;
+    
     [SerializeField] private bool loadEventPointsManually;
     [SerializeField] private Dictionary<Vector3, State> eventPoints;
     [SerializeField] private GameObject eventPrefab;
     [SerializeField] private bool autoGenerateEvents;
     [SerializeField] private float eventsInterval;
+    [SerializeField] private int gameoverCondition;
+    
     
     private List<EventDefinition> _eventsBase;
     private Event _currentEvent;
+    private int questCount;
+    private int failCount;
     
     private void Awake()
     {
         loadEventsBase();
+        questCount = 0;
+        failCount = 0;
     }
 
     // Start is called before the first frame update
@@ -60,23 +70,34 @@ public class EventManager : MonoBehaviour
             eventPoints[eventPoint] = State.Used;
             EventDefinition eventDefinition = _eventsBase[Utils.Functions.randomInt(_eventsBase.Count)];
 
+            initQuest?.Invoke(questCount, eventDefinition.description);
+            questCount++;
+            
             GameObject go = Instantiate(eventPrefab);
             _currentEvent = go.GetComponent<Event>();
-            _currentEvent.setup(eventPoint, eventDefinition, transform);
+            _currentEvent.setup(eventPoint, eventDefinition, transform, questCount);
             _currentEvent.eventFail += handleFailure;
             _currentEvent.eventSuccess += handleFix;
         }
     }
 
-    private void handleFailure(string eventName, Vector3 key)
+    private void handleFailure(string eventName, Vector3 key, int id)
     {
         Debug.Log(eventName + " fail");
+        failureReport?.Invoke(id);
+        failCount++;
+
+        if (failCount >= gameoverCondition)
+        {
+            Debug.Log("Gameover");
+        }
         eventPoints[key] = State.Available;
     }
 
-    private void handleFix(string eventName, Vector3 key)
+    private void handleFix(string eventName, Vector3 key, int id)
     {
         Debug.Log(eventName + " fixed");
+        successReport?.Invoke(id);
         eventPoints[key] = State.Available;
     }
 

@@ -16,5 +16,5 @@ MonoBehaviour:
   _hardness: 9
   _timeToFail: 60
   _timeToSuccess: 30
-  _name: 
+  _description: Museum burn
   _color: {r: 1, g: 0, b: 0, a: 1}

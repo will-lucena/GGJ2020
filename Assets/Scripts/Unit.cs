@@ -41,7 +41,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    private void freeUnit(string eventName, Vector3 eventPosition)
+    private void freeUnit(string eventName, Vector3 eventPosition, int id)
     {
         _task.eventSuccess -= freeUnit;
         _task.eventFail -= freeUnit;
