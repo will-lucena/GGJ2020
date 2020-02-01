@@ -6,7 +6,7 @@ BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2038815250329581986}
+  m_GameObject: {fileID: 4483170531711024140}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -32,7 +32,7 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2038815250329581986}
+  m_GameObject: {fileID: 4483170531711024140}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -64,7 +64,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 6
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: d5cf70fdbf9564f18bc80c44668f16a4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -83,7 +83,7 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2038815250329581986}
+  m_GameObject: {fileID: 4483170531711024140}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 38eebc2236403194682f8a07f61a89ea, type: 2}
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2038815250329581986}
+  m_GameObject: {fileID: 4483170531711024140}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2bd1b0b9527ab8d46b22926a7d43717b, type: 3}
@@ -185,7 +185,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 894b638956cd54000860d48d2b02a6cd, type: 3}
---- !u!1 &2038815250329581986 stripped
+--- !u!1 &4483170531711024140 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2484923163199751566, guid: 894b638956cd54000860d48d2b02a6cd,
     type: 3}
