@@ -246,7 +246,7 @@ MonoBehaviour:
   doctorsHeadquarter: {fileID: 1469899092}
   policyPrefab: {fileID: 5490162966974978780, guid: be634c0228ea044639035cc25fc2b041,
     type: 3}
-  firemanPrefab: {fileID: 2038815250329581986, guid: cb430b992baad42f0914af4703ff8bc7,
+  firemanPrefab: {fileID: 4483170531711024140, guid: cb430b992baad42f0914af4703ff8bc7,
     type: 3}
   doctorPrefab: {fileID: 2484923163199751566, guid: 894b638956cd54000860d48d2b02a6cd,
     type: 3}
@@ -1257,7 +1257,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &690424908
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4658,7 +4658,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.18729973, g: 0.1988425, b: 0.21698111, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -8846,7 +8846,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 6
   m_TargetDisplay: 0
 --- !u!224 &1162450023
 RectTransform:

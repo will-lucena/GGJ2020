@@ -44,6 +44,8 @@ public class AnimatorSetter : MonoBehaviour
         if (unit.GetState() == State.Used)
         {
             anim.SetBool("Working", true);
+            //transform.LookAt(unit.GetTask().transform.position);
+            //transform.localEulerAngles = new Vector3(0,0, transform.localEulerAngles.z);
         }
         else 
         {

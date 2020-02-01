@@ -53,4 +53,9 @@ public class Unit : MonoBehaviour
     {
         return state;
     }
+
+    public Event GetTask()
+    {
+        return _task;
+    }
 }
