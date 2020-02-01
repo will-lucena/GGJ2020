@@ -57,6 +57,71 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Pinch",
+            "id": "644f9d3f-7e40-4442-ae85-ae3353926b34",
+            "actions": [
+                {
+                    "name": "Touch1",
+                    "type": "Value",
+                    "id": "d8cd1ceb-7d25-47ff-ad70-92bdc7998ef8",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Touch2",
+                    "type": "Value",
+                    "id": "6850d5ce-c2b6-4555-8bb3-75688c8da8bd",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Tap2",
+                    "type": "Button",
+                    "id": "1739bf50-318a-4375-9cb2-bf8b26bd9507",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "040769d3-97e4-42c8-ac62-587b19c6cea4",
+                    "path": "<Touchscreen>/touch0/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Touch1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a74ea0e2-441d-4163-8f01-9101b2e1faa5",
+                    "path": "<Touchscreen>/touch1/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Touch2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a4da3a88-11e2-412e-b161-94f5b8e0dd0e",
+                    "path": "<Touchscreen>/touch1/startPosition",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Tap2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

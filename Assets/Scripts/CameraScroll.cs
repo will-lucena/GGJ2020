@@ -37,9 +37,9 @@ public class CameraScroll : MonoBehaviour
 
     private void Update()
     {
-        camTransform.position += ((Vector3) (-bufferVector) * Time.deltaTime);
+        camTransform.position += ((Vector3) (-bufferVector/6) * Time.deltaTime);
         if(canMouse)
-            MouseMoveCamera(mouseBufferVector/5);
+            MouseMoveCamera(mouseBufferVector/6);
     }
 
     private void MouseMoveCamera(Vector3 deltaVector)
