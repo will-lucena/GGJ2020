@@ -217,6 +217,7 @@
           <e p="CameraScroll.cs" t="Include" />
           <e p="CityEvent.cs" t="Include" />
           <e p="Event.cs" t="Include" />
+          <e p="EventBar.cs" t="Include" />
           <e p="EventDefinition.cs" t="Include" />
           <e p="EventManager.cs" t="Include" />
           <e p="PathCreator.cs" t="Include" />

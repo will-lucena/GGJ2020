@@ -99,6 +99,7 @@ public class UnitManager : MonoBehaviour
         for (int i = 0; i < poolSize; i++)
         {
             GameObject go = Instantiate(prefab);
+            go.transform.SetParent(transform);
             go.SetActive(false);
             go.GetComponent<Unit>().recall += recall;
             pool.Push(go);
