@@ -45,6 +45,7 @@ public class Event : MonoBehaviour
             eventFail?.Invoke(_name, transform.position);
             StopAllCoroutines();
         }
+        yield return new WaitForSeconds(1);
         Destroy(gameObject);
     }
 
@@ -58,6 +59,7 @@ public class Event : MonoBehaviour
         }
         eventSuccess?.Invoke(_name, transform.position);
         StopAllCoroutines();
+        yield return new WaitForSeconds(1);
         Destroy(gameObject);
     }
 
@@ -79,5 +81,13 @@ public class Event : MonoBehaviour
     {
         Debug.Log("Calling unities");
         callUnities?.Invoke(_kind, transform);
+    }
+
+    public void unitArrive()
+    {
+        if (_fixTime <= 0f)
+        {
+            StartCoroutine(fix());
+        }
     }
 }

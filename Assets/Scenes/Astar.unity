@@ -235,7 +235,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 158210792}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 189b6497a99c142db899966f9d93bb9e, type: 3}
   m_Name: 
@@ -561,7 +561,7 @@ MonoBehaviour:
   manualDebugFloorRoof: 0
   showSearchTree: 0
   unwalkableNodeDebugSize: 0.3
-  logPathResults: 1
+  logPathResults: 4
   maxNearestNodeDistance: 100
   scanOnStartup: 1
   fullGetNearestSearch: 0
