@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Pathfinding;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using Utils;
 
 public class AnimatorSetter : MonoBehaviour
 {
@@ -38,6 +39,15 @@ public class AnimatorSetter : MonoBehaviour
         else
         {
             anim.SetBool("Walking", false);
+        }
+
+        if (unit.GetState() == State.Used)
+        {
+            anim.SetBool("Working", true);
+        }
+        else 
+        {
+            anim.SetBool("Working", false);
         }
     }
 }

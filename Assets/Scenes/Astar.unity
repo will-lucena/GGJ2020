@@ -246,7 +246,7 @@ MonoBehaviour:
   doctorsHeadquarter: {fileID: 1469899092}
   policyPrefab: {fileID: 5490162966974978780, guid: be634c0228ea044639035cc25fc2b041,
     type: 3}
-  firemanPrefab: {fileID: 4483170531711024140, guid: cb430b992baad42f0914af4703ff8bc7,
+  firemanPrefab: {fileID: 2038815250329581986, guid: cb430b992baad42f0914af4703ff8bc7,
     type: 3}
   doctorPrefab: {fileID: 2484923163199751566, guid: 894b638956cd54000860d48d2b02a6cd,
     type: 3}
@@ -9785,7 +9785,7 @@ MonoBehaviour:
   eventPrefab: {fileID: 8931898436775222369, guid: 575b0a91b8d3e44a8860760dd71c5726,
     type: 3}
   autoGenerateEvents: 1
-  eventsInterval: 5
+  eventsInterval: 1
 --- !u!4 &1499330363
 Transform:
   m_ObjectHideFlags: 0

@@ -10,7 +10,8 @@ public class Unit : MonoBehaviour
     public Action<GameObject, UnitKind> recall;
     
     [SerializeField] private UnitDefinition unit;
-    
+
+    private Utils.State state;
     private AIPath _aiPath;
     private AIDestinationSetter _destinationSetter;
     private Event _task;
@@ -23,6 +24,7 @@ public class Unit : MonoBehaviour
         _aiPath = GetComponent<AIPath>();
         _aiPath.maxSpeed = unit.movementSpeed;
 
+        state = State.Available;
         _destinationSetter.target = target;
     }
 
@@ -35,6 +37,7 @@ public class Unit : MonoBehaviour
             _task.eventFail += freeUnit;
             _task.unitArrive();
             Debug.Log("Starting to work");
+            state = State.Used;
         }
     }
 
@@ -43,5 +46,11 @@ public class Unit : MonoBehaviour
         _task.eventSuccess -= freeUnit;
         _task.eventFail -= freeUnit;
         recall?.Invoke(gameObject, unit.kind);
+        state = State.Available;
+    }
+
+    public Utils.State GetState()
+    {
+        return state;
     }
 }
