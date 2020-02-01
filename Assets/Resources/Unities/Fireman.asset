@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Fireman
   m_EditorClassIdentifier: 
   _kind: 1
-  _movementSpeed: 0
+  _movementSpeed: 2
   _skills:
   - kind: 0
-    value: 0
+    value: 2
   - kind: 1
-    value: 0
+    value: 4
   - kind: 2
-    value: 0
+    value: 1
