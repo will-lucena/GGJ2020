@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Utils;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EventManager : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class EventManager : MonoBehaviour
     [SerializeField] private bool autoGenerateEvents;
     [SerializeField] private float eventsInterval;
     [SerializeField] private int gameoverCondition;
+    //[SerializeField] private Vector2 intervalRandomRange;
+    //Change for the variable above
+    private Vector2 intervalRandomRange = new Vector2(-2, 5);
     
     private List<EventDefinition> _eventsBase;
     private Event _currentEvent;
@@ -40,7 +44,7 @@ public class EventManager : MonoBehaviour
 
         if (autoGenerateEvents)
         {
-            InvokeRepeating("startEvent", 0f, eventsInterval);
+            InvokeRepeating("startEvent", 0f, eventsInterval + Random.Range(intervalRandomRange.x, intervalRandomRange.y));
         }
     }
     

@@ -11,7 +11,7 @@ public class Unit : MonoBehaviour
     
     [SerializeField] private UnitDefinition unit;
 
-    private Utils.State state;
+    private State state;
     private AIPath _aiPath;
     private AIDestinationSetter _destinationSetter;
     private Event _task;
@@ -35,7 +35,7 @@ public class Unit : MonoBehaviour
             _task = other.GetComponent<Event>();
             _task.eventSuccess += freeUnit;
             _task.eventFail += freeUnit;
-            _task.unitArrive();
+            _task.unitArrive(unit.skillValue(_task.getEventKind));
             Debug.Log("Starting to work");
             state = State.Used;
         }
