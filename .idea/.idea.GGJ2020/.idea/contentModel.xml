@@ -220,6 +220,7 @@
           <e p="EventBar.cs" t="Include" />
           <e p="EventDefinition.cs" t="Include" />
           <e p="EventManager.cs" t="Include" />
+          <e p="MenuManager.cs" t="Include" />
           <e p="PathCreator.cs" t="Include" />
           <e p="QuestJourney.cs" t="Include" />
           <e p="SecurityEvent.cs" t="Include" />
