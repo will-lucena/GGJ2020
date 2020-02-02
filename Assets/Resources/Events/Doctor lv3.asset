@@ -18,3 +18,4 @@ MonoBehaviour:
   _timeToSuccess: 30
   _description: Bus crash
   _color: {r: 1, g: 0, b: 0, a: 1}
+  _animation: MedicIcon
