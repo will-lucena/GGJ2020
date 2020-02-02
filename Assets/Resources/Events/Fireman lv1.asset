@@ -18,3 +18,4 @@ MonoBehaviour:
   _timeToSuccess: 10
   _description: Cat on tree
   _color: {r: 0.96469927, g: 1, b: 0, a: 1}
+  _animation: FireIcon

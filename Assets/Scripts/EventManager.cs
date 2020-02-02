@@ -18,7 +18,6 @@ public class EventManager : MonoBehaviour
     [SerializeField] private float eventsInterval;
     [SerializeField] private int gameoverCondition;
     
-    
     private List<EventDefinition> _eventsBase;
     private Event _currentEvent;
     private int questCount;

@@ -13,6 +13,8 @@ public class EventDefinition : ScriptableObject
     [SerializeField] private float _timeToSuccess;
     [FormerlySerializedAs("_name")] [SerializeField] private string _description;
     [SerializeField] private Color _color;
+    [SerializeField] private string _animation;
+    
 
     public EventKind kind => _kind;
     public new string description => _description;
@@ -20,5 +22,5 @@ public class EventDefinition : ScriptableObject
     public float timeToFail => _timeToFail;
     public float timeToSuccess => _timeToSuccess;
     public Color color => _color;
-
+    public string animation => _animation;
 }
