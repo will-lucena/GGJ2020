@@ -16,7 +16,7 @@ MonoBehaviour:
   _movementSpeed: 4
   _skills:
   - kind: 0
-    value: 4
+    value: 3
   - kind: 1
     value: 1
   - kind: 2
