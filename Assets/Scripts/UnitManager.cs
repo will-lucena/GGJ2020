@@ -18,6 +18,8 @@ public class UnitManager : MonoBehaviour
     [SerializeField] private GameObject firemanPrefab;
     [SerializeField] private GameObject doctorPrefab;
 
+    [SerializeField] private AudioSource policeSiren, ambulanceSiren, fireSiren;
+
     private Stack<GameObject> policiesPool;
     private Stack<GameObject> firemanPool;
     private Stack<GameObject> doctorsPool;
@@ -47,6 +49,7 @@ public class UnitManager : MonoBehaviour
             case EventKind.PolicyEvent:
                 if (policiesPool.Count > 0)
                 {
+                    policeSiren.Play();
                     unit = policiesPool.Pop().GetComponent<Unit>();
                     unit.gameObject.SetActive(true);
                     unit.setup(policiesHeadquarter, target);
@@ -56,6 +59,7 @@ public class UnitManager : MonoBehaviour
             case EventKind.FiremanEvent:
                 if (firemanPool.Count > 0)
                 {
+                    fireSiren.Play();
                     unit = firemanPool.Pop().GetComponent<Unit>();
                     unit.gameObject.SetActive(true);
                     unit.setup(firemanHeadquarter, target);
@@ -65,6 +69,7 @@ public class UnitManager : MonoBehaviour
             case EventKind.DoctorEvent:
                 if (doctorsPool.Count > 0)
                 {
+                    ambulanceSiren.Play();
                     unit = doctorsPool.Pop().GetComponent<Unit>();
                     unit.gameObject.SetActive(true);
                     unit.setup(doctorsHeadquarter, target);
