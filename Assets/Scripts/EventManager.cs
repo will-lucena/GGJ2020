@@ -90,6 +90,7 @@ public class EventManager : MonoBehaviour
         if (failCount >= gameoverCondition)
         {
             Debug.Log("Gameover");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver");
         }
         eventPoints[key] = State.Available;
     }

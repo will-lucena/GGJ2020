@@ -67,7 +67,7 @@ public class CameraScroll : MonoBehaviour
     private void Update()
     {
         if(Input.touchCount < 2 && Input.touchCount != 0)
-            camTransform.position += ((Vector3) (-bufferVector/6) * Time.deltaTime);
+            camTransform.position += ((Vector3) (-bufferVector/6) * Time.deltaTime * speedModifier);
         if(canMouse)
             MouseMoveCamera(mouseBufferVector/6);
 
