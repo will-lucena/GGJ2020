@@ -18,10 +18,12 @@ public class EventManager : MonoBehaviour
     [SerializeField] private bool autoGenerateEvents;
     [SerializeField] private float eventsInterval;
     [SerializeField] private int gameoverCondition;
-    //[SerializeField] private Vector2 intervalRandomRange;
-    //Change for the variable above
-    private Vector2 intervalRandomRange = new Vector2(-2, 5);
-    
+    [SerializeField] private bool useRandomInterval;
+    [SerializeField] private Vector2 intervalRandomRange;
+    [SerializeField] private float maxEventsAmount;
+
+
+    private float currentEventsAmount;
     private List<EventDefinition> _eventsBase;
     private Event _currentEvent;
     private int questCount;
@@ -32,6 +34,7 @@ public class EventManager : MonoBehaviour
         loadEventsBase();
         questCount = 0;
         failCount = 0;
+        currentEventsAmount = 0;
     }
 
     // Start is called before the first frame update
@@ -44,7 +47,14 @@ public class EventManager : MonoBehaviour
 
         if (autoGenerateEvents)
         {
-            InvokeRepeating("startEvent", 0f, eventsInterval + Random.Range(intervalRandomRange.x, intervalRandomRange.y));
+            if (useRandomInterval)
+            {
+                InvokeRepeating("startEvent", 0f, eventsInterval + Random.Range(intervalRandomRange.x, intervalRandomRange.y));
+            }
+            else
+            {
+                InvokeRepeating("startEvent", 0f, eventsInterval);
+            }
         }
     }
     
@@ -67,20 +77,24 @@ public class EventManager : MonoBehaviour
 
     public void startEvent()
     {
-        Vector3 eventPoint = eventPoints.Keys.FirstOrDefault(key => eventPoints[key] == State.Available);
-        if (eventPoint != Vector3.zero)
+        if (currentEventsAmount < maxEventsAmount)
         {
-            eventPoints[eventPoint] = State.Used;
-            EventDefinition eventDefinition = _eventsBase[Utils.Functions.randomInt(_eventsBase.Count)];
+            Vector3 eventPoint = eventPoints.Keys.FirstOrDefault(key => eventPoints[key] == State.Available);
+            if (eventPoint != Vector3.zero)
+            {
+                eventPoints[eventPoint] = State.Used;
+                EventDefinition eventDefinition = _eventsBase[Utils.Functions.randomInt(_eventsBase.Count)];
 
-            initQuest?.Invoke(questCount, eventDefinition.description);
-            questCount++;
+                initQuest?.Invoke(questCount, eventDefinition.description);
+                questCount++;
             
-            GameObject go = Instantiate(eventPrefab);
-            _currentEvent = go.GetComponent<Event>();
-            _currentEvent.setup(eventPoint, eventDefinition, transform, questCount);
-            _currentEvent.eventFail += handleFailure;
-            _currentEvent.eventSuccess += handleFix;
+                GameObject go = Instantiate(eventPrefab);
+                _currentEvent = go.GetComponent<Event>();
+                _currentEvent.setup(eventPoint, eventDefinition, transform, questCount);
+                _currentEvent.eventFail += handleFailure;
+                _currentEvent.eventSuccess += handleFix;
+                currentEventsAmount++;
+            }
         }
     }
 
@@ -96,6 +110,7 @@ public class EventManager : MonoBehaviour
             UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver");
         }
         eventPoints[key] = State.Available;
+        currentEventsAmount--;
     }
 
     private void handleFix(string eventName, Vector3 key, int id)
@@ -103,6 +118,7 @@ public class EventManager : MonoBehaviour
         Debug.Log(eventName + " fixed");
         successReport?.Invoke(id);
         eventPoints[key] = State.Available;
+        currentEventsAmount--;
     }
 
     public void fail()
