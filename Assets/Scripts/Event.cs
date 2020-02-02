@@ -24,10 +24,13 @@ public class Event : MonoBehaviour
     private int _id;
     private Animator _animator;
     private bool _isOpen;
+    private EventKind _eventKind;
 
     private bool firemanButtonAnimationFinished;
     private bool policyButtonAnimationFinished;
     private bool medicButtonAnimationFinished;
+
+    public EventKind getEventKind => _eventKind;
 
     private void Awake()
     {
@@ -81,6 +84,7 @@ public class Event : MonoBehaviour
         _timeToSucess = eventDefinition.timeToSuccess;
         _name = eventDefinition.description;
         _id = id;
+        _eventKind = eventDefinition.kind;
         _animator.SetTrigger(eventDefinition.kind.ToString());
         StartCoroutine(timer());
     }
@@ -88,7 +92,7 @@ public class Event : MonoBehaviour
     private IEnumerator timer()
     {
         float totalTime = 0f;
-        while (totalTime < _timeToFail)
+        while (totalTime < _timeToFail / _hardness)
         {
             totalTime += Time.deltaTime;
             failBarController.updateBar(1 - Mathf.Clamp(totalTime / _timeToFail, 0f, 1f));
@@ -103,13 +107,13 @@ public class Event : MonoBehaviour
         Invoke("destroy", 1);;
     }
 
-    private IEnumerator fix()
+    private IEnumerator fix(float fixerSkill)
     {
         _fixTime = 0f;
         fixBarController.initBar();
         while (_fixTime < _timeToSucess)
         {
-            _fixTime += Time.deltaTime;
+            _fixTime += Time.deltaTime * fixerSkill;
             fixBarController.updateBar(Mathf.Clamp(_fixTime / _timeToSucess, 0f, 1f));
             yield return new WaitForEndOfFrame();
         }
@@ -177,12 +181,12 @@ public class Event : MonoBehaviour
         _isOpen = false;
     }
     
-    public void unitArrive()
+    public void unitArrive(float fixerSkill)
     {
         Debug.Log("Unit arrived");
         if (_fixTime <= 0f)
         {
-            StartCoroutine(fix());
+            StartCoroutine(fix(fixerSkill));
         }
     }
 }

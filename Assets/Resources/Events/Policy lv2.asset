@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Policy lv2
   m_EditorClassIdentifier: 
   _kind: 0
-  _hardness: 6
+  _hardness: 2
   _timeToFail: 60
   _timeToSuccess: 20
   _description: Street fight

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Fireman lv1
   m_EditorClassIdentifier: 
   _kind: 1
-  _hardness: 3
+  _hardness: 1
   _timeToFail: 30
   _timeToSuccess: 10
   _description: Cat on tree
