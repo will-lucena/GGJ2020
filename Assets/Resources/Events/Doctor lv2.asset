@@ -18,3 +18,4 @@ MonoBehaviour:
   _timeToSuccess: 20
   _description: Car crash
   _color: {r: 1, g: 0.58835566, b: 0, a: 1}
+  _animation: MedicIcon
