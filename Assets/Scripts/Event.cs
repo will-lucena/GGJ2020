@@ -174,6 +174,7 @@ public class Event : MonoBehaviour
         firemanButton.closeButton();
         medicButton.closeButton();
         callUnities?.Invoke(kind, transform);
+        _isOpen = false;
     }
     
     public void unitArrive()

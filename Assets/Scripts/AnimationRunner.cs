@@ -34,18 +34,18 @@ public class AnimationRunner : MonoBehaviour
     public void closeButton()
     {
         Debug.Log(unit + " Running close animation");
-        runAnimation(finalPosition, initialPosition, duration, curve, true);
+        runAnimation(finalPosition, initialPosition, duration, curve, false);
     }
     
-    private void runAnimation(Vector3 initialPosition, Vector3 finalPosition, float duration, AnimationCurve curve, bool disableButton = false)
+    private void runAnimation(Vector3 initialPosition, Vector3 finalPosition, float duration, AnimationCurve curve, bool disableButton = true)
     {
         StartCoroutine(translateObject(initialPosition, finalPosition, duration, curve, disableButton));
     }
     
-    private IEnumerator translateObject (Vector3 initialPosition, Vector3 finalPosition, float duration, AnimationCurve curve, bool disableButton = false)
+    private IEnumerator translateObject (Vector3 initialPosition, Vector3 finalPosition, float duration, AnimationCurve curve, bool disableButton = true)
     {
         _image.enabled = true;
-        _image.raycastTarget = disableButton;
+        _image.raycastTarget = false;
         animationState?.Invoke(false);
         float i = 0;
         float rate = 1 / duration;
@@ -55,7 +55,7 @@ public class AnimationRunner : MonoBehaviour
             yield return null;
         }
         
-        if (disableButton)
+        if (!disableButton)
         {
             _image.enabled = false;
         }
