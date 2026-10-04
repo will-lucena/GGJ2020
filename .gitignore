@@ -62,3 +62,8 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+
+# Gerados pelo editor (Unity 6)
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+*.slnx
